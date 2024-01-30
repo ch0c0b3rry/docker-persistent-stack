@@ -94,3 +94,20 @@ services:
       - "7474:7474"
       - "7687:7687"
     restart: always
+
+
+  # All option with comment is optional, to use it, just uncomment it
+  postgresql:
+    container_name: postgresql
+    image: postgres:alpine
+    volumes:
+      - './data/postgresql:/data/db'
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=1234567
+      - POSTGRES_DB=default
+      # If you want to create multiple database, uncomment this line
+      # - POSTGRES_MULTIPLE_DATABASES=db1,db2,db3
+    ports:
+      - "5432:5432"
+    restart: always
